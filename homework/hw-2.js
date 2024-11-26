@@ -27,3 +27,44 @@ console.log(formatMessage("Vestibulum facilisis purus nec", 20)); // "Vestibulum
 console.log(formatMessage("Vestibulum facilisis purus nec", 30)); // "Vestibulum facilisis purus nec"
 console.log(formatMessage("Nunc sed turpis a felis in nunc fringilla", 15)); // "Nunc sed turpis..."
 console.log(formatMessage("Nunc sed turpis a felis in nunc fringilla", 41)); // "Nunc sed turpis a felis in nunc fringilla"
+
+function checkForSpam(message) {
+  const messageLowerCase = message.toLowerCase();
+  const messageIncludes =
+    messageLowerCase.includes("spam") || messageLowerCase.includes("sale");
+  return messageIncludes;
+}
+
+console.log(checkForSpam("Latest technology news")); // false
+console.log(checkForSpam("JavaScript weekly newsletter")); // false
+console.log(checkForSpam("Get best sale offers now!")); // true
+console.log(checkForSpam("Amazing SalE, only tonight!")); // true
+console.log(checkForSpam("Trust me, this is not a spam message")); // true
+console.log(checkForSpam("Get rid of sPaM emails. Our book in on sale!")); // true
+console.log(checkForSpam("[SPAM] How to earn fast money?")); // true
+
+function getShippingCost(country) {
+  switch (country) {
+    case "China":
+      return `Shipping to ${country} will cost 100 credits`;
+      break;
+    case "Chile":
+      return `Shipping to ${country} will cost 250 credits`;
+      break;
+    case "Australia":
+      return `Shipping to ${country} will cost 170 credits`;
+      break;
+    case "Jamaica":
+      return `Shipping to ${country} will cost 120 credits`;
+      break;
+    default:
+      return "Sorry, there is no delivery to your country";
+  }
+}
+
+console.log(getShippingCost("Australia")); // "Shipping to Australia will cost 170 credits"
+console.log(getShippingCost("Germany")); // "Sorry, there is no delivery to your country"
+console.log(getShippingCost("China")); // "Shipping to China will cost 100 credits"
+console.log(getShippingCost("Chile")); // "Shipping to Chile will cost 250 credits"
+console.log(getShippingCost("Jamaica")); // "Shipping to Jamaica will cost 120 credits"
+console.log(getShippingCost("Sweden")); // "Sorry, there is no delivery to your country"
