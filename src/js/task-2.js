@@ -25,10 +25,31 @@ const images = [
   },
 ];
 
-const gallery = document.querySelector(".gallery");
+const galleryEl = document.querySelector(".gallery");
 
-const marcup = images
-  .map((image) => `<li><img src=${image.url} alt=${image.alt}></li>`)
-  .join("");
+// const imagesEl = images.map((img) => {
+//   const listEl = document.createElement("li");
+//   const imageEl = document.createElement("img");
+//   imageEl.src = img.url;
+//   imageEl.alt = img.alt;
+//   imageEl.width = 360;
+//   imageEl.height = 300;
+//   listEl.append(imageEl);
+//   return listEl;
+// });
 
-gallery.insertAdjacentHTML("afterbegin", marcup);
+// console.log(imagesEl);
+
+function createImage(img) {
+  const listEl = document.createElement("li");
+  const imageEl = document.createElement("img");
+  imageEl.src = img.url;
+  imageEl.alt = img.alt;
+  imageEl.width = 360;
+  imageEl.height = 300;
+  listEl.append(imageEl);
+  return listEl;
+}
+
+const imagesEl = images.map(createImage);
+galleryEl.append(...imagesEl);
